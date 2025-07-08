@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: find-my-plug-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGODB_URI
+        fromDotEnv: true
+      - key: PORT
+        fromDotEnv: true
+
+  - type: web
+    name: find-my-plug-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
